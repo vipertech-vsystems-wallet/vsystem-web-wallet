@@ -1,0 +1,292 @@
+/* ALL */
+@font-face {
+    font-family: SairaRegular;
+    src: url(../fonts/Saira-Regular.ttf);
+}
+
+* {
+    color: rgb(49, 52, 75);
+    font-family: SairaRegular, Arial, serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+p {
+    word-break: break-word;
+}
+
+html, body, #page, input, select, .toolbar, textarea {
+    background-color: #f2f3f7;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+    border-radius: 18px;
+}
+
+/* BUTTONS */
+button {
+    background: linear-gradient(145deg, #fbfbfb, #e7e7ec);
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+    padding: 12px 18px;
+    vertical-align: middle;
+    transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+}
+
+button svg {
+    vertical-align: middle;
+}
+
+.disabled {
+    color: rgb(93, 97, 123);
+}
+
+.bright, .bright * {
+    color: rgb(93, 97, 123);
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.red, .red svg path {
+    color: #a91e2c;
+}
+
+.green, .green svg path {
+    color: #18634b;
+}
+
+
+button.rounded {
+    border-radius: 24px;
+}
+
+button.button-inset {
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    background: linear-gradient(145deg, #e7e7ec, #fbfbfb);
+}
+
+button.circle {
+    border-radius: 100%;
+    min-height: 48px;
+    min-width: 48px;
+    max-height: 48px;
+    max-width: 48px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+button:active, button.clicked {
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    background: linear-gradient(145deg, #e7e7ec, #fbfbfb);
+}
+
+/* FORM */
+input, select, textarea, input[type="file"] + label  {
+    width: inherit;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    padding: 12px 16px;
+    border: none;
+    margin: 0;
+    border-radius: 32px;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    -webkit-appearance: none;
+}
+
+*::placeholder, .placeholder {
+    color: rgb(93, 97, 123);
+}
+
+input.is-valid, input.is-invalid, select, input[type="file"].is-valid + label, input[type="file"].is-invalid + label {
+    padding-right: calc(1.5em + 1.2rem);
+    background-repeat: no-repeat;
+    background-position: center right calc(.375em + .3rem);
+    background-size: calc(.4875rem + .6rem) calc(.4875rem + .6rem);
+}
+
+input.is-valid, input[type="file"].is-valid + label {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='%2318634B' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z' /%3E%3C/svg%3E");
+}
+
+input.is-invalid, input[type="file"].is-invalid + label {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24' %3E%3Cpath fill='%23A91E2C' d='M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z' /%3E%3C/svg%3E");
+}
+
+select {
+    -moz-appearance: window;
+    -webkit-appearance: none;
+    padding: 12px 42px 12px 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' /%3E%3C/svg%3E");
+    background-size: 24px;
+}
+
+.feedback-input {
+    width: 100%;
+    margin-top: 1px;
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+input.is-valid + .feedback-input, input.is-valid + label + .feedback-input, input.is-invalid + .feedback-input * {
+    color: #18634b;
+}
+
+input.is-invalid + .feedback-input, input.is-invalid + label + .feedback-input, input.is-invalid + .feedback-input * {
+    color: #a91e2c;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+    display: block;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+input.input-right-button {
+    border-radius: 14px 0px 0px 14px;
+    vertical-align: middle;
+}
+
+button.input-right-button {
+    background-color: #f2f3f7;
+    border: none;
+    border-radius: 0px 14px 14px 0px;
+    font-size: 18px;
+    line-height: 33px;
+    margin: 0;
+    padding: 8px 16px;
+    transition: all ease .2s;
+    vertical-align: middle;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+}
+
+button.input-right-button:active {
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+}
+
+button.input-right-button * {
+    vertical-align: middle;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+
+label.checkbox {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    font-weight: 400;
+    line-height: 18px;
+    font-size: 18px;
+    margin-bottom: 0;
+    user-select: none;
+}
+
+label.checkbox::before {
+    content: "";
+    border-radius: 4px;
+    display: inline-block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 0;
+    top: 0;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    background-color: #f2f3f7;
+    transition: all .2s ease-in-out;
+}
+
+input:checked + label.checkbox::before {
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+    background-color: #f2f3f7;
+}
+
+label.toggle {
+    padding-left: 48px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+label.toggle::before {
+    border: 0;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    content: "";
+    background-color: #f2f3f7;
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 18px;
+    left:18px;
+    border-radius: 8px;
+    margin-top: 2px;
+}
+
+label.toggle::after {
+    border: 0;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+    content: "";
+    background-color: #f2f3f7;
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 8px;
+    left:18px;
+    margin-top: 2px;
+    transition: all .2s ease-in-out;
+}
+
+
+input:checked + label.toggle::after {
+    left:36px;
+    background-color: #f2f3f7;
+}
+
+
+/* CIRCLE PILLS */
+
+.card {
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9), 5px 5px 8px rgba(0, 0, 0, 0.07);
+    border-radius: 12px;
+    padding: 16px;
+    background: linear-gradient(145deg, #fbfbfb, #e7e7ec);
+}
+
+.card-inset {
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    border-radius: 12px;
+    padding: 16px;
+    background: linear-gradient(145deg, #e7e7ec, #fbfbfb);
+
+}
+
+svg {
+    width: 24px;
+    height: 24px;
+}

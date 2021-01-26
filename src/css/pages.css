@@ -1,0 +1,441 @@
+html, body {
+    margin: 0;
+}
+
+body {
+    width: 400px;
+    max-width: 100vw;
+}
+
+.gold, .gold svg path {
+    color: #a98337;
+}
+
+.gold-gradient {
+    background: linear-gradient(to left, #fcffbc, #a69044);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+*::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar
+{
+    width: 8px;
+    box-shadow: -6px -6px 8px rgba(255, 255, 255, 0.9) inset, 5px 5px 8px rgba(0, 0, 0, 0.07) inset;
+    border-radius: 8px
+}
+
+*::-webkit-scrollbar-thumb
+{
+    border-radius: 8px;
+    background: linear-gradient(145deg, #a98337, #a98337);
+}
+
+a {
+    cursor: pointer;
+}
+
+body {
+    overflow-x: hidden;  
+}
+
+#app {
+    height: 100vh;
+    width: 100vw;
+}
+
+.body-content {
+    padding-top: 72px;
+}
+
+@media(min-width: 1000px){
+    .overlay-download-chrome-ext {
+        display: initial !important;
+        position: absolute;
+        z-index: 9;
+        background-color: #f2f3f7;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .overlay-download-chrome-ext div {
+        margin: auto;
+        display: table;
+        position: absolute;
+        max-height: 375px;
+        left: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay-download-chrome-ext-int span a {
+        font-weight: bold;
+    }
+
+    .overlay-download-chrome-ext-int span a svg {
+        vertical-align: bottom;
+        margin-right: 8px;
+    }
+    
+    .overlay-download-chrome-ext-int span {
+        margin-top: 12px;
+        display: block;
+    }
+}
+
+.overlay-download-chrome-ext {
+    display: none;
+}
+
+.toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.toolbar-inner {
+    padding: 16px;
+    line-height: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toolbar-address {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 16px;
+}
+
+.toolbar-address svg {
+    margin-right: 8px;
+    vertical-align: sub;
+}
+
+.toolbar-address svg path {
+    color: #b59654;
+}
+
+.toolbar-address, .toolbar-title {
+    color: #b59654;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.home-header {
+    padding: 16px;
+    text-align: center;
+}
+
+.home-header-circle {
+    width: 132px;
+    height: 132px;
+    border-radius: 100% !important;
+    display: inline-block;
+    /*background-image: url(../images/vsys-logo.png);
+    background-size: 66%;
+    background-position: center 66%;
+    background-repeat: no-repeat;*/
+}
+
+.home-header-circle img {
+    max-height: 72%;
+    padding-top: 31px;
+    display: inherit;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.home-header-ammount-crypto {
+    padding: 16px 0px 0px 0px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.home-header-ammount-fiat {
+    padding: 0px 0px 16px 0px;
+    font-size: 14px;
+}
+
+.home-header-buttons button {
+    margin: 0px 8px;
+}
+
+.home-transactions {
+    padding: 16px 0px 0px 0px;
+}
+
+.transactions-header {
+    justify-content: space-between;
+    display: flex;
+    line-height: 24px;
+    font-size: 18px;
+    padding: 0px 16px 0px 16px;
+}
+
+.transactions-header-title {
+    cursor: pointer;
+}
+
+.transactions-header-title svg {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.transaction-block {
+    display: block;
+    width: calc(100% - 48px) !important;
+    margin: 0 12px 0 12px !important;
+}
+
+.transaction-block-inner {
+    display: flex;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.transactions-blocks {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.transaction-block button {
+    display: inline-block;
+    margin-right: 12px;
+    float: left;
+}
+
+.transaction-data {
+    display: inline-flex;
+    justify-content: space-between;
+    float: right;
+    width: 100%;
+}
+
+.transaction-other-data {
+    display: inline-block;
+    width: 100%;
+}
+
+.transaction-other-data .row {
+    text-overflow: ellipsis;
+}
+
+.transaction-meta-data {
+    width: 100%;
+}
+
+.row.address, .row.memo {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}
+
+.row.memo {
+    width: 100%;
+}
+
+.no-transactions {
+    padding: 16px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.menu-links {
+    padding: 16px;
+}
+
+.menu-links .nav-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.menu-links .nav-link span {
+    margin-left: 8px;
+    line-height: 45px;
+}
+
+.menu-links .nav-link button svg {
+    vertical-align: middle;
+}
+
+.nav-link.gold span, .nav-link.gold button svg path {
+    color: #a98337;
+}
+
+.send-inputs {
+    display: grid;
+    padding: 16px;
+}
+
+.toggle-fiat {
+    text-align: right;
+    margin-top: 13px;
+    right: 49px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 1;
+}
+
+.send-buttons {
+    padding: 16px;
+    text-align: right;
+}
+
+.send-ok-button svg rect, .send-ok-button svg path {
+    fill: #c8b069;
+}
+
+.no-transactions svg rect, .no-transactions svg path {
+    fill: #c8b069;
+}
+
+.home-header-ammount svg rect, .home-header-ammount svg path {
+    fill: #c8b069;
+}
+
+.send, .send svg path {
+    color: #a91e2c;
+}
+
+.send svg {
+    margin-right: 4px;
+}
+
+.receive, .receive svg path {
+    color: #18634b;
+}
+
+.receive svg {
+    margin-left: 4px;
+}
+
+.send-ok-button {
+    margin-left: 16px;
+}
+
+.input-group {
+    display: grid;
+    margin-bottom: 16px
+}
+
+.receive-buttons {
+    padding: 16px;
+    text-align: right;
+}
+
+.qr-card-zone {
+    padding: 16px;
+    text-align: center;
+}
+
+.qr-card {
+    max-width: 216px;
+    max-height: 216px;
+    display: inline-block;
+}
+
+.address-zone {
+    padding: 16px;
+}
+
+.address-zone input {
+    width: calc(100% - 92px);
+}
+
+
+.open-form-tabs {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.open-form-tabs a {
+    margin-right: 16px;
+    display: inline-block;
+}
+
+.open-form-group {
+    padding: 16px;
+}
+
+.open-text {
+    padding: 16px;
+}
+
+.open-buttons {
+    padding: 16px;
+    text-align: right;
+}
+
+.open-buttons button:first-child {
+    margin-left: 0px;
+}
+ 
+ .open-buttons button {
+     margin-left: 16px;
+ }
+
+.open-buttons button svg rect, .open-buttons button svg path {
+    fill: #c8b069;
+}
+
+input:checked + label.toggle::after {
+    background: linear-gradient(145deg, #a98337, #c8b069) !important;
+}
+
+input:checked + label.checkbox::before {
+    background: linear-gradient(145deg, #a98337, #c8b069) !important;
+}
+
+.terms-content {
+    padding: 0px 16px 16px 16px;
+}
+
+.terms-social-buttons {
+    text-align: center;
+}
+
+.terms-social-buttons button {
+    margin: 0 8px;
+}
+
+button.facebook svg path {
+    color: #3b5999;
+}
+
+button.twitter svg path {
+    color: #1da1f2;
+}
+
+button.github svg path {
+    color: #31344b;
+}
+
+.about-content {
+    padding: 0px 16px 32px 16px;
+}
+
+.security-content {
+    padding: 0px 16px 32px 16px;
+}
+
+.password-change-button svg rect, .password-change-button svg path {
+    fill: #c8b069;
+}
+
+.settings-content {
+    padding: 0px 16px 16px 16px;
+}
