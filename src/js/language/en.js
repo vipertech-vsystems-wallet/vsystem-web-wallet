@@ -111,6 +111,8 @@ const en = {
         SETTINGS: {
             SETTINGS: "Settings",
             LANGUAGE: "Language",
+            ADD_LANGUAGE_A: "Email us at",
+            ADD_LANGUAGE_B: "to add a new language.",
             CURRENCY: "Currency",
             SOUNDS: "Sounds",
             ENABLE_SFX: "Enable sound effects",

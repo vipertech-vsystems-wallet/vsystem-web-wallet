@@ -7,6 +7,8 @@ import { download } from "../utils/file-api";
 import actions from "../actions/utils";
 import { LANGUAGES } from "../utils/constants";
 
+import CloseIcon from "../components/icons/CloseIcon";
+
 export default class Settings extends React.Component {
 
     constructor(props) {
@@ -140,9 +142,7 @@ export default class Settings extends React.Component {
                         <div class="toolbar-title">{L.SETTINGS}</div>
                         <NavLink to={`/`} class="nav-link">
                             <button class="circle toolbar-menu-button">
-                                <svg viewBox="0 0 24 24">
-                                    <path fill="currentColor" d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
-                                </svg>
+                                <CloseIcon/>
                             </button>
                         </NavLink>
                      </div>  
@@ -155,6 +155,7 @@ export default class Settings extends React.Component {
                             {lanugages_change_item}
                         </select>
                     </div>
+                    <p>{L.ADD_LANGUAGE_A} <a href="mailto:contact@vipertech.ch">contact@vipertech.ch</a> {L.ADD_LANGUAGE_B}</p>
                     <h1>{L.CURRENCY}</h1>
                     <div class="input-group">
                         <select value={_selected_currency} onChange={this._handle_selected_currency_change}>

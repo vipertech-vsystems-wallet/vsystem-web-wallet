@@ -10,7 +10,11 @@ import actions from "../actions/utils";
 import api from "../utils/api";
 import { get_password_strength_on_five } from "../utils/password";
 
-import Loader from "../components/Loader"; 
+import Loader from "../components/Loader";
+
+import CloseIcon from "../components/icons/CloseIcon";
+import EyeIcon from "../components/icons/EyeIcon";
+import EyeOffIcon from "../components/icons/EyeOffIcon";
 
 export default class Open extends React.Component {
 
@@ -37,6 +41,7 @@ export default class Open extends React.Component {
             _valid_backup_file: false,
             _account_from_file: null,
             _text_account: "",
+            _show_password: false,
             _is_logged: api.is_logged()
         };
     };
@@ -192,6 +197,7 @@ export default class Open extends React.Component {
 
     _handle_selected_wallet_name_change = (event) => {
         
+        // Set the new wallet name and automatically update the checkbox for backup downlaod 
         const _selected_wallet_name = event.target.value;
         const _backup_agreed = _selected_wallet_name == "_new" ? true: false;
         
@@ -329,8 +335,10 @@ export default class Open extends React.Component {
     
     _reset_account_result = (result) => {
         
+        // Get account again
         this._get_accounts();
         
+        // Set progress false and trigger sound
         if(result) {
             this.setState({_is_reset_progress: false});
             actions.trigger_vocal("accounts_reset.mp3", 1);
@@ -352,11 +360,17 @@ export default class Open extends React.Component {
             api.delete_accounts(this._reset_account_result);
         }
     };
+
+    _handle_toggle_show_password = () => {
+      
+        const _show_password = !this.state._show_password;
+        this.setState({_show_password});
+    };
     
     render() {
         
         const { L, accounts, _selected_wallet_name, _is_ok_button_disabled, _wallet_password, _terms_agreed, _backup_agreed, _is_ok_in_progress, _is_reset_progress, address, name } = this.state;
-        const { _error_password, _error_file_type, _error_file_content, _valid_backup_file, _file_name, _wallet_name, _wallet_name_empty, _is_logged, _text_account } = this.state;
+        const { _error_password, _error_file_type, _error_file_content, _valid_backup_file, _file_name, _wallet_name, _wallet_name_empty, _is_logged, _text_account, _show_password } = this.state;
         
         // Login tab
         let login_tab_class = _selected_wallet_name !== "_new" && _selected_wallet_name !== "_backup" ? "gold": "";
@@ -371,28 +385,35 @@ export default class Open extends React.Component {
         const backup_tab_class = _selected_wallet_name == "_backup" ? "gold": "";
         const backup_tab = <a onClick={() => this._set_selected_wallet_name("_backup")} class={backup_tab_class}>{L.BACKUP}</a>;
        
-        
+        // Reset button
         const reset_disabled_class = accounts.length ? "" : "disabled";
         const reset_button_content = _is_reset_progress ? <Loader />: L.RESET;
         
+        // OK button
         const ok_button_content = _is_ok_in_progress ? <span><Loader /> {L.WAIT}</span> : L.OK;
         const ok_disabled_class = _is_ok_button_disabled ? "disabled": "";
         
+        // Show hide password icon
+        const show_hide_password_icon = _show_password ? <EyeOffIcon/>: <EyeIcon/>;
+        
+        // Passsword
         let password_text = _selected_wallet_name == "_new" ?
             L.CHOOSE_NEW_PASSWORD + " " + L.PASSWORD_STRENGTH + get_password_strength_on_five(_wallet_password) + "/5":
             L.PUT_PASSWORD;
         password_text = _error_password && _wallet_password.length ? L.WRONG_PASSWORD: password_text;
         const password_input_text_class = _error_password && _wallet_password.length ? "is-invalid": "";
         
+        // File input
         let file_input_text = (_error_file_type || _error_file_content) ? L.INVALID_BACKUP : L.UPLOAD_BACKUP;
         file_input_text = _valid_backup_file ? L.VALID_BACKUP : file_input_text;
-        
         let file_input_text_class = (_error_file_type || _error_file_content) ? "is-invalid": "";
         file_input_text_class = _valid_backup_file ? "is-valid": file_input_text_class;
-
-        const new_input_class = _wallet_name_empty && !_wallet_name.length ? "is-invalid": "";
+        
+        // New name
+        const new_name_input_class = _wallet_name_empty && !_wallet_name.length ? "is-invalid": "";
         const name_input_text = _wallet_name_empty && !_wallet_name.length ? L.NAME_CANNOT_EMPTY: L.GIVE_WALLET_NAME;
 
+        // File input
         const file_input_component = _selected_wallet_name == "_backup" ?
             <div class="input-group">
                 <input id="openInputFile" class={file_input_text_class} type="file" onChange={this._validate_file} />
@@ -400,13 +421,15 @@ export default class Open extends React.Component {
                 <div class="feedback-input">{file_input_text}</div>
                 <textarea placeholder={L.PASTE_BACKUP} value={_text_account} onChange={this._handle_validate_file_paste}/>
             </div>: null;
-        
+    
+        // Wallet name input
         const name_input_component = _selected_wallet_name == "_new" ?
             <div class="input-group">
-                <input id="openInputName" class={new_input_class} type="text" value={_wallet_name} onChange={this._handle_wallet_name_change} placeholder={L.WALLET_NAME} />
+                <input id="openInputName" class={new_name_input_class} type="text" value={_wallet_name} onChange={this._handle_wallet_name_change} placeholder={L.WALLET_NAME} />
                 <div class="feedback-input">{name_input_text}</div>
             </div>: null;
         
+        // Accounts item
         const optionItems = accounts.map((account) => {
             
             if(typeof account.name !== "undefined") {
@@ -415,15 +438,15 @@ export default class Open extends React.Component {
             }
         });
         
+        // Close menu
         const close_menu_component = _is_logged ?
             <NavLink to={``} class="nav-link">
                 <button class="circle toolbar-menu-button">
-                    <svg viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
-                    </svg>
+                    <CloseIcon/>
                 </button>
             </NavLink>: null;
     
+        // Backup checkbox
         const backup_checkbox_component = _selected_wallet_name == "_new" ?
             <div class="input-group">
                 <input type="checkbox" id="checkboxBackup" checked={_backup_agreed} onChange={this._handle_backup_agreed_change}/>
@@ -431,6 +454,7 @@ export default class Open extends React.Component {
             </div>: null;
 
 
+       // Selected wallet name input
         const wallet_name_input_component = _selected_wallet_name !== "_backup" && _selected_wallet_name !== "_new" ?
             <div class="input-group">
                 <select value={_selected_wallet_name} onChange={this._handle_selected_wallet_name_change}>
@@ -440,6 +464,7 @@ export default class Open extends React.Component {
                 <div class="feedback-input">{L.SELECT_CREATE_WALLET}</div>
             </div>: null;
     
+        // Form component
         const open_form_component =
             <div class="open-form-group">
                 <div class="open-form-tabs">
@@ -451,16 +476,25 @@ export default class Open extends React.Component {
                     {file_input_component}
                     {name_input_component}
                 <div class="input-group">
-                    <input type="password" class={password_input_text_class} placeholder={L.WALLET_PASSWORD} value={_wallet_password} onChange={this._handle_wallet_password_change}/>
+                    <span class="toggle-show-password" onClick={this._handle_toggle_show_password}>{show_hide_password_icon}</span>
+                    <input type={_show_password ? "text": "password"}
+                            class={"open-password " + password_input_text_class}
+                            placeholder={L.WALLET_PASSWORD}
+                            value={_wallet_password}
+                            onChange={this._handle_wallet_password_change}/>
                 <div class="feedback-input">{password_text}</div>
                     </div>
                     <div class="input-group">
-                    <input type="checkbox" id="checkboxTerms" checked={_terms_agreed} onChange={this._handle_terms_agreed_change}/>
+                    <input type="checkbox"
+                            id="checkboxTerms"
+                            checked={_terms_agreed}
+                            onChange={this._handle_terms_agreed_change}/>
                     <label class="checkbox" for="checkboxTerms">{L.AGREED_TO} <Link to="/terms">{L.TERMS}</Link>.</label>
                 </div>
                 {backup_checkbox_component}
             </div>;
     
+        // Button component
         const open_buttons_component =
             <div class="open-buttons">
                 <button class={"rounded " + reset_disabled_class} onClick={this._reset_account}>{reset_button_content}</button>

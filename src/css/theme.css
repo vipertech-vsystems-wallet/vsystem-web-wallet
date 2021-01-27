@@ -116,16 +116,16 @@ input, select, textarea, input[type="file"] + label  {
 input.is-valid, input.is-invalid, select, input[type="file"].is-valid + label, input[type="file"].is-invalid + label {
     padding-right: calc(1.5em + 1.2rem);
     background-repeat: no-repeat;
-    background-position: center right calc(.375em + .3rem);
+    background-position: center right 18px;
     background-size: calc(.4875rem + .6rem) calc(.4875rem + .6rem);
 }
 
 input.is-valid, input[type="file"].is-valid + label {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='%2318634B' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z' /%3E%3C/svg%3E");
+    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='%2318634B' d='M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z' /%3E%3C/svg%3E");*/
 }
 
 input.is-invalid, input[type="file"].is-invalid + label {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24' %3E%3Cpath fill='%23A91E2C' d='M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z' /%3E%3C/svg%3E");
+    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24' %3E%3Cpath fill='%23A91E2C' d='M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z' /%3E%3C/svg%3E");*/
 }
 
 select {

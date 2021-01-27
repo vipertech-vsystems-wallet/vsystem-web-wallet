@@ -111,6 +111,8 @@ const fr = {
         SETTINGS: {
             SETTINGS: "Réglages",
             LANGUAGE: "Langue",
+            ADD_LANGUAGE_A: "Envoyez-nous un email à",
+            ADD_LANGUAGE_B: "pour ajouter une nouvelle langue.",
             CURRENCY: "Monnaie",
             SOUNDS: "Sons",
             ENABLE_SFX: "Activer les sons",
