@@ -78,10 +78,10 @@ export default class Home extends React.Component {
         this.setState({_selected_currency});
     };
 
-    _process_get_balance_query_result = (_balance) => {
+    _process_get_balance_query_result = (result) => {
     
         // Set balance on request result
-        this.setState({_balance});
+        this.setState({_balance: result});
     };
 
     _process_get_more_transactions_query_result = (_new_transactions) => {

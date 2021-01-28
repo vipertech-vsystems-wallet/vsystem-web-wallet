@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import clipboard from "clipboard-polyfill";
 import actions from "../actions/utils";
+import api from "../utils/api";
+
+import { DONATION_ADDRESS, DONATION_GOAL } from"../utils/constants";
 
 import FacebookIcon from "../components/icons/FacebookIcon";
 import TwitterIcon from "../components/icons/TwitterIcon";
@@ -18,7 +21,14 @@ export default class About extends React.Component {
         this.state = {
             L: props.L.PAGES.ABOUT,
             _history: HISTORY,
+            _donation_balance: 0
         };
+    };
+
+    _set_donation_balance_query_result = (result) => {
+
+        // Set balance on request result
+        this.setState({_donation_balance: result});
     };
     
     _open_facebook = () => {
@@ -43,16 +53,24 @@ export default class About extends React.Component {
 
         const { _history } = this.state;
         
-        clipboard.writeText("AR82QAxrty3y6VxUEkuyx1dgHs4XHpXkdHp");
+        clipboard.writeText(DONATION_ADDRESS);
         actions.trigger_sfx("copy.mp3", 1);
         actions.trigger_vocal("address_copied.mp3", 1);
         _history.push("/send", {});
         
     };   
+    
+    componentDidMount() {
+        
+        api.get_balance(DONATION_ADDRESS, this._set_donation_balance_query_result)
+    }
 
     render() {
 
-        const { L } = this.state;
+        const { L, _donation_balance } = this.state;
+
+        const donation_goal_k = (DONATION_GOAL / 1000).toFixed(0);
+        const donation_balance_k = (_donation_balance / 1000).toFixed(0); 
         
         return (
             <div class="body-content">
@@ -108,8 +126,8 @@ export default class About extends React.Component {
         
                     <h1 class="gold">{L.DONATION}</h1>
                     <img src="../images/0rsic.jpg" onClick={this._copy_donation_address} />
-                    <p class="gold" onClick={this._copy_donation_address}>AR82QAxrty3y6VxUEkuyx1dgHs4XHpXkdHp</p>
-                    <p>{L.DONATION_A}</p>
+                    <p class="gold" onClick={this._copy_donation_address}>{DONATION_ADDRESS}</p>
+                    <p>{L.DONATION_A} ({donation_balance_k + "K / " + donation_goal_k + "K VSYS"})</p>
         
                     <h1>{L.CONTACT}</h1>
                     <p><a href="mailto:contact@vipertech.ch">contact@vipertech.ch</a> // <a href="https://forms.gle/169at48GsDXSLsKD7" target="_blank">Google forms (Feedback)</a></p>

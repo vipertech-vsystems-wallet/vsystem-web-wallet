@@ -2,17 +2,19 @@ import triplesec from "triplesec";
 import PouchDB from "pouchdb";
 import vsys from "@virtualeconomy/js-v-sdk";
 import converters from "../utils/converters";
+import { get_currency_by_country_code } from "../utils/currency";
 import base58 from "base-58";
 
 import { clean_json_text } from "../utils/json";
+import get_browser_locales from "../utils/locales";
 
-import { NODES_IP, CURRENCIES } from "../utils/constants";
+import { NODES_IP, CURRENCIES, LANGUAGES } from "../utils/constants";
 
 /* VSYS SETUP */
 const constants = vsys.constants;
-const node_address = NODES_IP[0];
+let selected_node = NODES_IP[0];
 const network_byte = constants.MAINNET_BYTE;
-var chain = new vsys.Blockchain(node_address, network_byte);
+let chain = new vsys.Blockchain(selected_node, network_byte);
 
 /* DB */
 const query_db = new PouchDB("query_db", {revs_limit: 1, auto_compaction: true});
@@ -22,6 +24,51 @@ const all_settings_db = new PouchDB("all_settings_db", {revs_limit: 1, auto_comp
 
 let logged_account = null;
 let all_settings = null;
+
+function _load_settings_locales() {
+    
+    // Get browser locales
+    const locales = get_browser_locales({language_code_only: false});
+    
+
+    // Default locales are english but if the browser is set to a langue below it will set the locales if it is part of the list
+    if(typeof locales !== "undefined") {
+
+        let language = "en";
+        let currency = "usd";
+        let country = "usa";
+
+        // Get locales from the end, the first will be set last
+        for(let i = locales.length-1; i >= 0; i--) {
+
+            // Get "en-US" like ["en","US"]
+            const locale = locales[i];
+            const locale_array = locale.split("-");
+
+
+            if(locale_array.length == 2) {
+
+                // Set both language and country
+                language = locale_array[0].toLowerCase();
+                country = locale_array[1].toUpperCase();
+            }else {
+
+                // Use locales like "en" only if L. like "en-US" doesn't exist
+                if(country == "") {
+
+                    language = locale_array[0].toLowerCase();
+                }
+            }
+        }
+        
+        currency = get_currency_by_country_code(country).toLowerCase();
+        
+        return {
+            selected_language: language,
+            selected_currency: currency
+        };
+    }
+}
 
 function _loadJSON(url, callback_function) {
     let data_file = url;
@@ -144,10 +191,11 @@ function get_settings(callback_function) {
 
                     const setting = JSON.parse(settings[0].data);
 
-                    if(typeof setting.node_address !== "undefined") {
+                    if(typeof setting.selected_node !== "undefined") {
 
                         doc_valid = true;
                         all_settings = _merge_object(all_settings, setting);
+                        selected_node = all_settings.selected_node;
                         callback_function(all_settings);
                     }
                 }
@@ -168,15 +216,21 @@ function get_settings(callback_function) {
         if(!doc_valid || all_docs_query_error) {
 
             all_settings = {
-                node_address: node_address,
-                explorer_address: "https://explorer.v.systems/address/"
+                explorer_address: "https://explorer.v.systems/address",
+                selected_node: selected_node,
+                sfx_enabled: false,
+                vocal_enabled: false,
+                selected_currency: "usd",
+                selected_language: "en"
             };
+            
+            all_settings = _merge_object(all_settings, _load_settings_locales());
 
-            all_settings_db.put({
-                _id: '1',
+            all_settings_db.post({
                 data: JSON.stringify(all_settings)
             });
 
+            selected_node = all_settings.selected_node;
             callback_function(all_settings);
         }
     }
@@ -190,6 +244,8 @@ function get_settings(callback_function) {
 function set_settings(settings, callback_function) {
 
     let all_setting_doc = null;
+    
+    if(typeof settings.selected_node !== "undefined") { selected_node = settings.selected_node }
 
     function cache_callback_function(error, response) {
 
@@ -208,7 +264,7 @@ function set_settings(settings, callback_function) {
 
                     const setting = JSON.parse(settings_docs[0].data);
 
-                    if(typeof setting.node_address !== "undefined") {
+                    if(typeof setting.selected_node !== "undefined") {
 
                         all_setting_doc = settings_docs[0];
                     }
@@ -227,8 +283,8 @@ function set_settings(settings, callback_function) {
         if(!all_setting_doc) {
 
             const default_all_settings = {
-                node_address: node_address,
-                explorer_address: "https://explorer.v.systems/address/",
+                explorer_address: "https://explorer.v.systems/address",
+                selected_node: selected_node,
                 sfx_enabled: false,
                 vocal_enabled: false,
                 selected_currency: "usd",
@@ -236,12 +292,12 @@ function set_settings(settings, callback_function) {
             };
 
             all_settings = _merge_object(default_all_settings, settings);
-
-
+            
             all_settings_db.post({
                 data: JSON.stringify(all_settings)
             });
 
+            
             callback_function(all_settings);
         }else { // Update
 
@@ -461,7 +517,15 @@ function login(public_key = "", password = "", callback_function) {
                         if(!error) {
 
                             account.private_key = buffer.toString();
-                            logged_account = account;
+                            
+                            logged_account = {
+                                name: account.name,
+                                address: account.address,
+                                public_key: account.public_key,
+                                private_key: account.private_key,
+                                encrypted_private_key: account.encrypted_private_key
+                            };
+                            
                             callback_function(logged_account);
                         }else {
                             
@@ -511,7 +575,13 @@ function login_from_backup(account = "", password = "", callback_function) {
 
             }
 
-            logged_account = account;
+            logged_account = {
+                name: account.name,
+                address: account.address,
+                public_key: account.public_key,
+                private_key: account.private_key,
+                encrypted_private_key: account.encrypted_private_key
+            };
             callback_function(logged_account);
 
         }else {

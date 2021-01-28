@@ -36,7 +36,6 @@
     "react-virtualized": "^9.22.3",
     "react-qr-code": "^1.0.0",
     "string_decoder": "^1.0.3",
-    "cache.adderall": "^0.1.0",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
@@ -56,7 +55,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
-    "build": "webpack --env.prod & uglifyjs src/client.min.js -o src/client.min.js -c -m"
+    "build": "webpack --env.prod & uglifyjs src/js/client.min.js -o src/client.min.js -c -m"
   },
   "author": "VIPERTECH.CH",
   "license": "BY-NC-ND"

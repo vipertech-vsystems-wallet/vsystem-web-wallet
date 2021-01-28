@@ -27,7 +27,7 @@ const fr = {
             ANDROID_A: "Appuyez sur l'icône de menu (3 points dans le coin supérieur droit) et appuyez sur Ajouter à l'écran d'accueil.",
             ANDROID_B: "Vous pourrez saisir un nom pour le raccourci, puis Chrome l'ajoutera à votre écran d'accueil.",
             DONATION: "Donation",
-            DONATION_A: "Cliquez sur le texte ou l'image ci-dessus pour garantir que cette application continue d'être gratuite et open-source et fournir les moyens au developpers de continuer de faire évoluer ce programme et d'en faire la promotion.",
+            DONATION_A: "Cliquez sur le texte ou l'image ci-dessus pour garantir que cette application continue d'être gratuite et open-source en fournissant les moyens au developpers de continuer de faire évoluer ce programme et d'en faire la promotion.",
             CONTACT: "Contact"
         },
         HOME: {
@@ -117,7 +117,8 @@ const fr = {
             SOUNDS: "Sons",
             ENABLE_SFX: "Activer les sons",
             ENABLE_VOCALS: "Activer les voix",
-            SEE_MORE: "Voir plus sur"
+            SEE_MORE: "Voir plus sur",
+            NETWORK: "Noeud de connexion"
         },
         TERMS: {
             TERMS: "Conditions de services",

@@ -19,7 +19,7 @@ function get_browser_locales(options = {}) {
 
     return browser_locales.map(locale => {
         const trimmed_locale = locale.trim();
-    
+        
         return opt.language_code_only
             ? trimmed_locale.split(/-|_/)[0]
             : trimmed_locale;

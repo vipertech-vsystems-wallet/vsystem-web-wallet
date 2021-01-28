@@ -1,4 +1,4 @@
-var CACHE_NAME = "v1";
+var CACHE_NAME = "v3";
 var IMMUTABLE_FILES = [
     "fonts/Saira-Regular.ttf",
     "sounds/sfx/copy.mp3",
@@ -21,6 +21,7 @@ var IMMUTABLE_FILES = [
     "sounds/vocal/passwords_are_identical.mp3",
     "sounds/vocal/sound_effects_disabled.mp3",
     "sounds/vocal/sound_effects_enabled.mp3",
+    "sounds/vocal/the_node_has_changed.mp3",
     "sounds/vocal/transaction_failed.mp3",
     "sounds/vocal/transaction_received.mp3",
     "sounds/vocal/transaction_sent.mp3",
@@ -42,21 +43,20 @@ var MUTABLE_FILES = [
 ];
 
 
-// Cache resources
-self.addEventListener("install", event => {
+this.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache =>
-            cache.addAll(IMMUTABLE_FILES.concat(MUTABLE_FILES))
-        )
+        caches.open(CACHE_NAME).then(function(cache) {
+            return cache.addAll(IMMUTABLE_FILES.concat(MUTABLE_FILES));
+        })
     );
 });
 
 // Respond with cached resources
-self.addEventListener('fetch', function(event) {
+this.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.open(CACHE_NAME).then(function(cache) {
-            return cache.match(event.request).then(function (response) {
-                return response || fetch(event.request).then(function(response) {
+        caches.match(event.request).catch(function() {
+            return fetch(event.request).then(function(response) {
+                return caches.open(CACHE_NAME).then(function(cache) {
                     cache.put(event.request, response.clone());
                     return response;
                 });

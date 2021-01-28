@@ -1,10 +1,15 @@
 import { createBrowserHistory } from "history";
 const HISTORY = createBrowserHistory();
-const APPLICATION_RELEASE = "0.0.13";
+const DONATION_ADDRESS = "AR82QAxrty3y6VxUEkuyx1dgHs4XHpXkdHp";
+const DONATION_GOAL = 500 * 1000;
+const APPLICATION_RELEASE = "0.0.14";
 const ADDRESS_EXPLORER = "https://explorer.v.systems/address/";
 const APP_URL = "https://vsys-gold-wallet.com/";
-const NODES_IP = ["https://wallet.v.systems/api/"];
-const CURRENCIES = ["usd","eur", "chf", "rub", "jpy"];
+const NODES_IP = [
+    "https://wallet.v.systems/api",
+    "http://vnode.vcoin.systems:9922"
+];
+const CURRENCIES = ["usd","eur", "gbp", "chf", "rub", "jpy"];
 const LANGUAGES = ["en","fr"];
 const LOAD_NUMBER_BEFORE_LAST_TRANSACTION = 5;
 const LOAD_NUMBER_OF_TRANSACTIONS = 20;
@@ -52,6 +57,8 @@ const PAGE_ROUTES = [
 
 module.exports = {
     HISTORY: HISTORY,
+    DONATION_ADDRESS: DONATION_ADDRESS,
+    DONATION_GOAL: DONATION_GOAL,
     PAGE_ROUTES: PAGE_ROUTES,
     ADDRESS_EXPLORER: ADDRESS_EXPLORER,
     APPLICATION_RELEASE: APPLICATION_RELEASE,

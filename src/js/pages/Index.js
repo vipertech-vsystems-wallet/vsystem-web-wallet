@@ -1,13 +1,12 @@
 import React from "react";
 
-import { PAGE_ROUTES, HISTORY } from "../utils/constants";
+import { PAGE_ROUTES, HISTORY, CURRENCIES } from "../utils/constants";
 import LANGUAGES from "../language/index";
 import { update_meta_title } from "../utils/meta-tags";
 import sound_api from "../utils/sound-api";
 import dispatcher from "../dispatcher";
 import api from "../utils/api";
 import actions from "../actions/utils";
-import get_browser_locales from "../utils/locales";
 
 import Home from "./Home";
 import Menu from "./Menu";
@@ -97,19 +96,6 @@ export default class Index extends React.Component {
             
             this.setState({_selected_language: settings.selected_language});
             
-        }else {
-            
-            // Get browser locales
-            const locales = get_browser_locales({language_code_only: true});
-            
-            // Default locales are english but if the browser is set to a langue below it will set the locales if it is part of the list
-            if(typeof locales !== "undefined") {
-                
-                if(locales[0] == "fr") { 
-                    
-                    this.setState({_selected_language: locales[0]});
-                }
-            }
         }
     };
     

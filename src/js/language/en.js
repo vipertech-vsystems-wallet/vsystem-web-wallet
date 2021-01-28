@@ -117,7 +117,8 @@ const en = {
             SOUNDS: "Sounds",
             ENABLE_SFX: "Enable sound effects",
             ENABLE_VOCALS: "Enable vocals",
-            SEE_MORE: "See more on"
+            SEE_MORE: "See more on",
+            NETWORK: "Node"
         },
         TERMS: {
             TERMS: "Terms of services",
