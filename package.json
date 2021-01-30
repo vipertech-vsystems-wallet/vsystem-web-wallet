@@ -55,7 +55,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
-    "build": "webpack --env.prod & uglifyjs src/js/client.min.js -o src/client.min.js -c -m"
+    "build": "webpack --env.prod && uglifyjs src/client.min.js -o src/client.min.js -c -m"
   },
   "author": "VIPERTECH.CH",
   "license": "BY-NC-ND"
