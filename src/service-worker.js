@@ -1,4 +1,4 @@
-var CACHE_NAME = "v3";
+var CACHE_NAME = "v3.1";
 var IMMUTABLE_FILES = [
     "fonts/Saira-Regular.ttf",
     "sounds/sfx/copy.mp3",

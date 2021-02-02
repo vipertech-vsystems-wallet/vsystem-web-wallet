@@ -125,7 +125,7 @@ export default class About extends React.Component {
                     </ol>
         
                     <h1 class="gold">{L.DONATION}</h1>
-                    <img src="../images/0rsic.jpg" onClick={this._copy_donation_address} />
+                    <img src="../images/0rthona.jpg" onClick={this._copy_donation_address} />
                     <p class="gold" onClick={this._copy_donation_address}>{DONATION_ADDRESS}</p>
                     <p>{L.DONATION_A} ({donation_balance_k + "K / " + donation_goal_k + "K VSYS"})</p>
         

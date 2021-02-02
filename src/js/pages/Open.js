@@ -489,7 +489,7 @@ export default class Open extends React.Component {
                             id="checkboxTerms"
                             checked={_terms_agreed}
                             onChange={this._handle_terms_agreed_change}/>
-                    <label class="checkbox" for="checkboxTerms">{L.AGREED_TO} <Link to="/terms">{L.TERMS}</Link>.</label>
+                    <label class="checkbox" for="checkboxTerms">{L.AGREED_TO} <Link to="/terms">{L.TERMS}</Link> {L.AND} <Link to="/how">{L.HOW}</Link>.</label>
                 </div>
                 {backup_checkbox_component}
             </div>;

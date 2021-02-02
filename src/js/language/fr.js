@@ -38,6 +38,17 @@ const fr = {
             MY_TRANSACTIONS: "Mes transactions",
             EXPLORER: "Voir plus"
         },
+        HOW:{
+            HOW: "Comment ça marche",
+            HOW_1: "Finance",
+            HOW_1A: "Le gouvernement continuera d’exister jusqu’à ce qu’il ne soit plus nécessaire. L’absence de gouvernement est l’anarchie; pas l’autonomie. L’absence de quelqu’un d’autre contrôlant votre esprit ne vous donne pas automatiquement une pensée critique, il est donc plus logique, raisonnable et rationnel d’apprendre à tout apprendre par nous-mêmes et de devenir ainsi autonome, ce qui rend le contrôle de l’esprit externe — ou le gouvernement — plus nécessaire.",
+            HOW_1B: "Pour la finance il en va de même, vous l'avez compris.",
+            HOW_2: "Blockchain",
+            HOW_2A: "La technologie de la blockchain réduit le besoin d'un tiers pour la gestion de la masse monétaire ainsi que pour la fortune des comptes, son architecture, rend son fonctionnement inviolable. Des algorithmes complexes assurent qu'aucune clé privée ne soit jamais envoyée sur le réseau, seulement un résultat d'une opération avec celle-ci, l'équation pour retourner à la valeur de la clé privée est impossible bien que l'opération verse soit facile, l'on appelle ces séries de calculs des algorithmes asymétriques. Chaque compte à une clé publique et une privé, vous l'avez compris la clé publique permet en gros de vérifier si la signature de la transaction est bien celle de l'équation de la clé privée. ",
+            HOW_2B: "Vsystems fournit un modèle de consensus pour valider les séries de transactions (s'assurer que les transactions n'ont pas été effacées) qui est très robuste et peu gourmand en énergie contrairement à Bitcoin.",
+            HOW_3: "Avantages",
+            HOW_3A: "Un des avantages de la technologie de la blockchain est que les transactions sont anonymes, tant qu'aucun lien entre la clé publique de l'utilisateur et son identité n'est fait, cela reste anonyme. L'autre avantage est le coût d'opération par rapport à sa sécurité, des sommes colossales peuvent être envoyées pour de très bas coût en sans risque d'annulation. Ce bas coût de fonctionnement fait en sorte que la masse monétaire n'excède pas de beaucoup, après des années, la valeur censée être symétrique de chaque unité de monnaie (inflation lente)."
+        },
         INDEX: {
             DOWNLOAD: "Téléchargez notre extension Chrome",
             OR_USE_MOBILE: "Ou utilisez un smartphone."
@@ -77,6 +88,8 @@ const fr = {
             WALLET_PASSWORD: "Mot-de-passe du compte",
             AGREED_TO: "j'ai lu et accepté les",
             TERMS: "termes",
+            AND: "et",
+            HOW: "comment ça marche"
 
         },
         RECEIVE: {

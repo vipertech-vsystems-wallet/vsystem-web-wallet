@@ -14,6 +14,7 @@ import Send from "./Send";
 import Receive from "./Receive";
 import Open from "./Open";
 import Terms from "./Terms";
+import How from "./How";
 import About from "./About";
 import Security from "./Security";
 import Settings from "./Settings";
@@ -167,7 +168,7 @@ export default class Index extends React.Component {
         
         const { pathname, _history, _sfx_enabled, _logged_account } = this.state;
         
-        if(_logged_account == null && (new_pathname !== "/open" && new_pathname !== "/terms")) {
+        if(_logged_account == null && (new_pathname !== "/open" && new_pathname !== "/terms" && new_pathname !== "/how")) {
             
             // Redirect before changing the pathname cause the user should not access other pages
             _history.push("/open");
@@ -207,6 +208,10 @@ export default class Index extends React.Component {
                         L={_language_object}
                         key={_selected_language}>
                     </Terms>,
+            how:  <How
+                        L={_language_object}
+                        key={_selected_language}>
+                    </How>,
             menu:   <Menu
                         L={_language_object}
                         key={_selected_language}>

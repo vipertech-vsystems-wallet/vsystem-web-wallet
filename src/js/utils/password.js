@@ -3,7 +3,7 @@ import zxcvbn from "zxcvbn";
 function get_password_strength_on_five(password) {
     
     // 0 - 4 -> 1-5
-    return 1; zxcvbn(password).score + 1;
+    return zxcvbn(password).score + 1;
     
 }
 

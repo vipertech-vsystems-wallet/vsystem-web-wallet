@@ -38,6 +38,17 @@ const en = {
             MY_TRANSACTIONS: "My transactions",
             EXPLORER: "See more"
         },
+        HOW:{
+            HOW: "How it works",
+            HOW_1: "Finance",
+            HOW_1A: "Government will continue to exist until it is no longer necessary. The absence of government is anarchy; not autonomy. Absence of someone else controlling your mind does not automagically give you critical thinking, so it’s more logical, reasonable, and rational to learn how to learn anything for ourselves, and thereby become autonomous, whereby external mind control- or government- is no longer necessary.",
+            HOW_1B: "The same is true for finance, you understand.",
+            HOW_2: "Blockchain",
+            HOW_2A: "Blockchain technology reduces the need for a third party for the management of the money supply as well as for the fortunes of accounts, its architecture makes its operation inviolable. Complex algorithms ensure that no private key is ever sent over the network, only a result of an operation with it, the equation for returning the value of the private key is impossible although the operation pays out easy, we call these series of calculations asymmetric algorithms. Each account has a public key and a private one, as you can see, the public key basically allows you to check whether the signature of the transaction is that of the private key equation.",
+            HOW_2B: "Vsystems provides a consensus model for validating series of transactions (ensuring transactions have not been cleared) which is very robust and energy efficient unlike Bitcoin.",
+            HOW_3: "Advantages",
+            HOW_3A: "One of the advantages of blockchain technology is that transactions are anonymous, as long as no link between the user's public key and their identity is made, it remains anonymous. The other advantage is the cost of operation compared to its security, colossal sums can be sent for very low cost without risk of cancellation. This low cost of operation ensures that the money supply does not greatly exceed, after years, the value supposed to be symmetrical for each unit of money (slow inflation)."
+        },
         INDEX: {
             DOWNLOAD: "Download our chrome extension",
             OR_USE_MOBILE: "or use a mobile device."
@@ -77,6 +88,8 @@ const en = {
             WALLET_PASSWORD: "Wallet password",
             AGREED_TO: "I have read and agree to the",
             TERMS: "terms",
+            AND: "and",
+            HOW: "how it works"
             
         },
         RECEIVE: {

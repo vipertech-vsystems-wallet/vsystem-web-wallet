@@ -2,7 +2,7 @@ import { createBrowserHistory } from "history";
 const HISTORY = createBrowserHistory();
 const DONATION_ADDRESS = "AR82QAxrty3y6VxUEkuyx1dgHs4XHpXkdHp";
 const DONATION_GOAL = 500 * 1000;
-const APPLICATION_RELEASE = "0.0.14";
+const APPLICATION_RELEASE = "0.1.0";
 const ADDRESS_EXPLORER = "https://explorer.v.systems/address/";
 const APP_URL = "https://vsys-gold-wallet.com/";
 const NODES_IP = [
@@ -17,40 +17,44 @@ const LOAD_NUMBER_OF_TRANSACTIONS = 20;
 const PAGE_ROUTES = [
     {
         page_regex: /\//,
-        page_name: "home",
+        page_name: "home"
     },
     {
         page_regex: /\/(menu)\/?/,
-        page_name: "menu",
+        page_name: "menu"
     },
     {
         page_regex: /\/(open)\/?/,
-        page_name: "open",
+        page_name: "open"
     },
     {
         page_regex: /\/(receive)\/?/,
-        page_name: "receive",
+        page_name: "receive"
     },
     {
         page_regex: /\/(send)\/?/,
-        page_name: "send",
+        page_name: "send"
     },
     {
         page_regex: /\/(settings)\/?/,
-        page_name: "settings",
+        page_name: "settings"
     },
     {
         page_regex: /\/(security)\/?/,
-        page_name: "security",
+        page_name: "security"
     },
     {
         page_regex: /\/(terms)\/?/,
-        page_name: "terms",
+        page_name: "terms"
     },
     {
         page_regex: /\/(about)\/?/,
-        page_name: "about",
-    }
+        page_name: "about"
+    },
+    {
+        page_regex: /\/(how)\/?/,
+        page_name: "how"
+    },
     
 ];
 
