@@ -15,6 +15,8 @@ const constants = vsys.constants;
 let selected_node = NODES_IP[0];
 const network_byte = constants.MAINNET_BYTE;
 let chain = new vsys.Blockchain(selected_node, network_byte);
+const TX_TYPE = 2; // Send / receive transactions
+
 
 /* DB */
 const query_db = new PouchDB("query_db", {revs_limit: 1, auto_compaction: true});
@@ -707,11 +709,11 @@ function get_transactions(address = "", number_of_record = 0, offset = 0, callba
                 callback_function(JSON.parse(formated_transactions));
             }else { // if old update
 
-                chain.getTxHistory(address, number_of_record, offset).then(response => {
+                chain.getTxByType(address, number_of_record, TX_TYPE, offset).then(response => {
 
-                    if(typeof response[0] !== "undefined") {
+                    if(typeof response["transactions"] !== "undefined") {
 
-                        const formated_transactions = response[0].map(transaction => _format_transaction(transaction));
+                        const formated_transactions = response["transactions"].map(transaction => _format_transaction(transaction));
     
                         query_db.put({
                             _id: doc._id,
@@ -735,11 +737,11 @@ function get_transactions(address = "", number_of_record = 0, offset = 0, callba
         }else {
 
             // Get data from network
-            chain.getTxHistory(address, number_of_record, offset).then(response => {
+            chain.getTxByType(address, number_of_record, TX_TYPE, offset).then(response => {
 
-                if(typeof response[0] !== "undefined") {
+                if(typeof response["transactions"] !== "undefined") {
 
-                    const formated_transactions = response[0].map(transaction => _format_transaction(transaction));
+                    const formated_transactions = response["transactions"].map(transaction => _format_transaction(transaction));
 
                     query_db.put({
                         _id: query_id,

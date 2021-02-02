@@ -125,8 +125,8 @@ export default class Home extends React.Component {
     _is_transaction_loaded = ({index}) => {
         
         const { _transactions } = this.state;
-        // Index + LOAD_NUMBER_BEFORE_LAST_TRANSACTION and it works, just waiting for offset to work in the api
-        return !!_transactions[index+0]; 
+        // Index + 0 and it don't works, just waiting for offset to work in the api
+        return !!_transactions[index + LOAD_NUMBER_BEFORE_LAST_TRANSACTION]; 
     };
 
     _refresh_api_page = () => {
