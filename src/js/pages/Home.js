@@ -86,8 +86,10 @@ export default class Home extends React.Component {
 
     _process_get_more_transactions_query_result = (_new_transactions) => {
     
+        console.log(_new_transactions);
+        
         // Concat transactions or set first transactions if null
-        const _transactions = this.state._transactions == null ? _new_transactions: this.state._transactions.concat(_new_transactions);
+        const _transactions = this.state._transactions === null ? _new_transactions: this.state._transactions.concat(_new_transactions);
         
         // Set the new transactions in the state (normal) along with if it has been laoded (So it can load more after it has been set)
         this.setState({_transactions, _is_new_transactions_loaded: true});
@@ -109,7 +111,7 @@ export default class Home extends React.Component {
         
         // Get address, transactions and compute the number of transactions
         const { address, _transactions } = this.state;
-        const number_of_transaction = _transactions == null ? 0: _transactions.length;
+        const number_of_transaction = _transactions === null ? 0: _transactions.length;
          
         // Tell the component that new transactions hasn't been loaded yet (So it doesn't try to load more yet)
         this.setState({_is_new_transactions_loaded: false});
@@ -139,7 +141,7 @@ export default class Home extends React.Component {
             api.get_balance(address, this._process_get_balance_query_result);
             
             // Reset transaction THEN load more  
-            this.setState({_transactions: null}, this._load_more_transactions());
+            this.setState({_transactions: null}, this._load_more_transactions);
             
             // Get settings
             api.get_settings(this._process_get_settings_query_result)

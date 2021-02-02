@@ -11,8 +11,8 @@ const NODES_IP = [
 ];
 const CURRENCIES = ["usd","eur", "gbp", "chf", "rub", "jpy"];
 const LANGUAGES = ["en","fr"];
-const LOAD_NUMBER_BEFORE_LAST_TRANSACTION = 5;
-const LOAD_NUMBER_OF_TRANSACTIONS = 20;
+const LOAD_NUMBER_BEFORE_LAST_TRANSACTION = 6;
+const LOAD_NUMBER_OF_TRANSACTIONS = 30;
 
 const PAGE_ROUTES = [
     {
