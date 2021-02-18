@@ -10,6 +10,7 @@ export default class Transaction extends React.Component {
             transaction: props.transaction,
             currency_change: props.currency_change,
             is_received: props.is_received,
+            is_visible: props.is_visible,
             selected_currency: props.selected_currency,
             _clicked: false
         };
@@ -23,7 +24,7 @@ export default class Transaction extends React.Component {
 
     render() {
 
-        const { style, transaction, currency_change, is_received, selected_currency, _clicked } = this.state;
+        const { style, transaction, currency_change, is_received, selected_currency, _clicked, is_visible } = this.state;
         
         const memo = transaction.memo.length ? transaction.memo: "-"; // Show memo or "-"
         const address = is_received ? transaction.sender: transaction.recipient; // Show useful address
@@ -45,9 +46,10 @@ export default class Transaction extends React.Component {
         const amount_fiat = (transaction.amount * currency_change).toFixed(2);
         const amount_fiat_text = amount_fiat + " " + selected_currency.toUpperCase();
     
+        const transaction_classes = "transaction-block " + (is_visible ? "is-visible": "is-invisible");
     
         const transaction_block_inner = !_clicked ? // Clicked or not -> Show address and memo or transaction info
-            <div class="transaction-block-inner card">
+            <div class={"transaction-block-inner card "}>
                 {transaction_full_icon}
                 <div class="transaction-data">
                     <div class="left">
@@ -73,7 +75,7 @@ export default class Transaction extends React.Component {
         
             // Display styles passed in props for react virtualized or other things
          return (
-            <div class="transaction-block" style={style} onClick={this._toggle_clicked}>
+            <div class={transaction_classes} style={style} onClick={this._toggle_clicked}>
                 {transaction_block_inner}
             </div>
          );

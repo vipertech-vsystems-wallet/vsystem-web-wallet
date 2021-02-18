@@ -163,8 +163,9 @@ export default class Home extends React.Component {
        
         return (
             <Transaction
-                key={index}
+                key={index  + isVisible.toString()}
                 style={style}
+                is_visible={isVisible}
                 transaction={transaction}
                 currency_change={currency_change}
                 is_received={is_received}

@@ -1,8 +1,8 @@
 import { createBrowserHistory } from "history";
 const HISTORY = createBrowserHistory();
 const DONATION_ADDRESS = "AR82QAxrty3y6VxUEkuyx1dgHs4XHpXkdHp";
-const DONATION_GOAL = 500 * 1000;
-const APPLICATION_RELEASE = "0.1.0";
+const DONATION_GOAL = 333 * 1000;
+const APPLICATION_RELEASE = "0.1.1";
 const ADDRESS_EXPLORER = "https://explorer.v.systems/address/";
 const APP_URL = "https://vsys-gold-wallet.com/";
 const NODES_IP = [
@@ -11,7 +11,7 @@ const NODES_IP = [
 ];
 const CURRENCIES = ["usd","eur", "gbp", "chf", "rub", "jpy"];
 const LANGUAGES = ["en","fr"];
-const LOAD_NUMBER_BEFORE_LAST_TRANSACTION = 6;
+const LOAD_NUMBER_BEFORE_LAST_TRANSACTION = 4;
 const LOAD_NUMBER_OF_TRANSACTIONS = 30;
 
 const PAGE_ROUTES = [

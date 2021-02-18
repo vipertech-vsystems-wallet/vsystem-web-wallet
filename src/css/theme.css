@@ -203,7 +203,7 @@ label.checkbox {
     position: relative;
     padding-left: 28px;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 1.3em;
     font-size: 18px;
     margin-bottom: 0;
     user-select: none;
@@ -289,4 +289,12 @@ input:checked + label.toggle::after {
 svg {
     width: 24px;
     height: 24px;
+}
+
+.is-visible {
+    
+}
+
+.is-invisible {
+
 }
